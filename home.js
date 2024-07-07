@@ -44,6 +44,8 @@ const category = [
 ]
 
 let ul = document.querySelector('ul');
+let selectedcat = JSON.parse(localStorage.getItem('selectedcat')) || [];
+
 
 for(let i=0; i<category.length ; i++){
 
@@ -56,7 +58,20 @@ for(let i=0; i<category.length ; i++){
     let addbtn = document.createElement('button');
     addbtn.classList.add('plus');
     addbtn.textContent = "+";
+    addbtn.setAttribute('data-category', category[i].name);
+    addbtn.addEventListener('click', function(){
+        if(selectedcat.includes(this.getAttribute('data-category'))){
+            alert("You can only select each category once!");
 
+        }else{
+            selectedcat.push(this.getAttribute('data-category'));
+            localStorage.setItem('selectedcat',JSON.stringify(selectedcat));
+            updatenextbtn();
+        }
+    })
+    
+
+    
 
     string.appendChild(txt);
     ul.appendChild(string);
@@ -64,3 +79,13 @@ for(let i=0; i<category.length ; i++){
     string.append(addbtn);
 
 }
+
+let nextbtn = document.querySelector('.nextbtn');
+
+function updatenextbtn(){
+    nextbtn.textContent = "Next > (" + selectedcat.length +")";
+}
+
+document.addEventListener('DOMContentLoaded', updatenextbtn);
+
+

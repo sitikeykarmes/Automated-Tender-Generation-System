@@ -4,6 +4,7 @@ html, body{
     font-family: sans-serif;
 }
 
+
 .nav{
     display: flex;
     flex-direction: row;
@@ -130,10 +131,10 @@ li p{
     text-align: center;
     display: flex;
     justify-content: center;
-    height: 50px;
-    width: 50px;
+    align-items: center;
+    width: 120px;
     padding: 10px;
-    border-radius: 50%;
+    border-radius: 10px;
     background-color: white;
     color: green;
     border: 2px solid green;
@@ -149,3 +150,4 @@ li p{
 a{
     text-decoration: none;
 }
+
